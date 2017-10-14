@@ -1,27 +1,15 @@
 # RegistrationDemo
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.4.
+An application to provide three functions:
+* A Registration Form with basic personal information
+ * information entry provides auto-fill on compliant browsewrs
+ * Information entry is validated client-side
+ * data is submitted to a REST API, and a confirmation response returned
+* The confirmation data is shown to the user
+* A report page is provided to display all registered users
 
-## Development server
+# Acknowledgments
+* This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.4.
+* API code adapted from [Heroku MEAN Tutorial](https://devcenter.heroku.com/articles/mean-apps-restful-api).
+ * See [See Virtue #1](http://threevirtues.com/) for motivation; Nevertheless, the general approach is fairly cookie-cutter in any case
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
