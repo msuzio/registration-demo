@@ -2,10 +2,11 @@
 
 var express = require("express");
 var bodyParser = require("body-parser");
-var mongodb = require("mongodb");
-var ObjectID = mongodb.ObjectID;
+//var mongodb = require("mongodb");
+var diskdb = require('diskdb');
+var assert = require('assert');
+// var ObjectID = mongodb.ObjectID;
 
-var ATTENDEES_COLLECTION = "attendees";
 
 // our basic trusty tiny web server
 var app = express();
@@ -13,24 +14,25 @@ var app = express();
 // get the middleware to parse incoming JSON
 app.use(bodyParser.json());
 
-var db;
-
 // Connect to the database; using core Mongo support; 
 // Mongoose is a possible option if it helps with server-side validation
-var mongoURL = process.env.MONGODB_URI || 'mongodb://localhost:27017/registration';
-mongodb.MongoClient.connect(mongoURL,
-    function (err, database) {
-    if (err) {
-        console.log(err);
-        process.exit(1);
-    }
-    // database object is deliberate global so it is usuable 
-    // throughout the application and wqe don't continuously reconnect.
-    // Don't like it at all; should wrap this in a service.
-    console.log("Database connection ready");
-    db = database;
-});
+// var mongoURL = process.env.MONGODB_URI || 'mongodb://localhost:27017/registration';
+// mongodb.MongoClient.connect(mongoURL,
+//     function (err, database) {
+//         assert.equal(null, err, "failed to connect to Mongo instance");
+//         if (err) {
+//             console.log(err);
+//             process.exit(1);
+//         }
+//         // database object is deliberate global so it is usuable 
+//         // throughout the application and we don't continuously reconnect.
+//         // Don't like it at all; should wrap this in a service module.
+//         console.log("Database connection ready");
+//         db = database;
+// });
 
+var db = diskdb.connect('./datastore');
+db.loadCollections(["attendees"]);
 
   // set  up error handling and two endpoints
 
@@ -46,12 +48,21 @@ function handleError(res, reason, message, code) {
   */
   
   app.get("/event/attendee", function(req, res) {
+      var all = db.attendees.find();
+      res.status(200).json(all);
   });
   
   app.post("/event/attendee", function(req, res) {
       var attendee = req.body
-      db.
-      console.log(attendee);
+      attendee.registerDate = new Date();
+    //   db.collection(ATTENDEES_COLLECTION).insertOne( attendee, function(result,err) {
+    //       console.log(err);
+    //       assert.equal(null,err);
+    //       assert(1,result.insertedCount);
+    //   });
+    db.attendees.save(attendee);
+    console.log(attendee);
+    res.status(200).json(attendee);
   });
 
   // Initialize the app.
