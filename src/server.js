@@ -1,3 +1,5 @@
+'use strict'
+
 var express = require("express");
 var bodyParser = require("body-parser");
 var mongodb = require("mongodb");
@@ -13,20 +15,22 @@ app.use(bodyParser.json());
 
 var db;
 
-// Connect to the database; using core Mongo support; Mongoose is a possible option
-// if server-side vaslidation requires it
-mongodb.MongoClient.connect(process.env.MONGODB_URI, 
-function (err, database) {
-  if (err) {
-    console.log(err);
-    process.exit(1);
-  }
+// Connect to the database; using core Mongo support; 
+// Mongoose is a possible option if it helps with server-side validation
+var mongoURL = process.env.MONGODB_URI || 'mongodb://localhost:27017/registration';
+mongodb.MongoClient.connect(mongoURL,
+    function (err, database) {
+    if (err) {
+        console.log(err);
+        process.exit(1);
+    }
+    // database object is deliberate global so it is usuable 
+    // throughout the application and wqe don't continuously reconnect.
+    // Don't like it at all; should wrap this in a service.
+    console.log("Database connection ready");
+    db = database;
 });
 
-  // database object is deliberate global so it is usuable 
-  // throughout the application.
-  db = database;
-  console.log("Database connection ready");
 
   // set  up error handling and two endpoints
 
@@ -44,7 +48,10 @@ function handleError(res, reason, message, code) {
   app.get("/event/attendee", function(req, res) {
   });
   
-  app.post("/api/attendee", function(req, res) {
+  app.post("/event/attendee", function(req, res) {
+      var attendee = req.body
+      db.
+      console.log(attendee);
   });
 
   // Initialize the app.

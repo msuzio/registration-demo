@@ -1,6 +1,8 @@
- // suggested by Heroku tutorial; including just because 
- // I'm leery of browser issues biting me, given limited ability to test
- // a wide sample
+ // ng-cli leaves this import out, and I've never 
+ // had issues before,but was suggested by Heroku tutorial. 
+ // Including just because I'm leery of browser issues 
+ // biting me, given limited ability to test
+ // a wide sample.
 import './polyfills.ts';
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
