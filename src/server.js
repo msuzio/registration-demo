@@ -1,10 +1,11 @@
 'use strict'
 
-var express = require("express");
-var bodyParser = require("body-parser");
+const express = require("express");
+const bodyParser = require("body-parser");
 //var mongodb = require("mongodb");
-var diskdb = require('diskdb');
-var assert = require('assert');
+const diskdb = require('diskdb');
+//var assert = require('assert');
+const uuidv1 = require('uuid/v1');
 // var ObjectID = mongodb.ObjectID;
 
 
@@ -54,15 +55,11 @@ function handleError(res, reason, message, code) {
   
   app.post("/event/attendee", function(req, res) {
       var attendee = req.body
+      attendee.id = uuidv1();
       attendee.registerDate = new Date();
-    //   db.collection(ATTENDEES_COLLECTION).insertOne( attendee, function(result,err) {
-    //       console.log(err);
-    //       assert.equal(null,err);
-    //       assert(1,result.insertedCount);
-    //   });
-    db.attendees.save(attendee);
-    console.log(attendee);
-    res.status(200).json(attendee);
+      db.attendees.save(attendee);
+      console.log(attendee);
+      res.status(200).json(attendee);
   });
 
   // Initialize the app.
