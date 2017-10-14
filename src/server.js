@@ -6,6 +6,8 @@ const bodyParser = require("body-parser");
 const diskdb = require('diskdb');
 //var assert = require('assert');
 const uuidv1 = require('uuid/v1');
+const dateFormat = require('dateformat');
+
 // var ObjectID = mongodb.ObjectID;
 
 
@@ -33,7 +35,7 @@ app.use(bodyParser.json());
 // });
 
 var db = diskdb.connect('./datastore');
-db.loadCollections(["attendees"]);
+db.loadCollections(["attendee"]);
 
   // set  up error handling and two endpoints
 
@@ -56,7 +58,9 @@ function handleError(res, reason, message, code) {
   app.post("/event/attendee", function(req, res) {
       var attendee = req.body
       attendee.id = uuidv1();
-      attendee.registerDate = new Date();
+      var now = new Date();
+      attendee.registerDate = now;
+      attendee.formattedRegisterDate = dateFormat(now, "UTC:h:MM:ss TT Z");
       db.attendees.save(attendee);
       console.log(attendee);
       res.status(200).json(attendee);

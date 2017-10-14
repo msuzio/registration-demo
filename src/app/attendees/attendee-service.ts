@@ -10,18 +10,19 @@ export class AttendeeService {
     constructor (private http: Http) {}
 
     handleError(error) {
-console.log(error);
+        console.log(error);
     }
 
-    // get("/api/Attendees")
+    // get("/api/attendees")
     getAttendees(): Promise<void | Attendee[]> {
+        console.log("Fetching from " + this.eventServiceURL);
       return this.http.get(this.eventServiceURL)
                  .toPromise()
                  .then(response => response.json() as Attendee[])
                  .catch(this.handleError);
     }
 
-    // post("/api/Attendees")
+    // post("/api/attendees")
     registerAttendee(newAttendee: Attendee): Promise<void | Attendee> {
       return this.http.post(this.eventServiceURL, newAttendee)
                  .toPromise()

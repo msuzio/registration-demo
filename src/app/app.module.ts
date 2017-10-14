@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {HttpModule} from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { AttendeeDetailsComponent } from './attendees/attendee-details/attendee-details.component';
@@ -14,7 +15,7 @@ import { AttendeeRegisterComponent } from './attendees/attendee-register/attende
     AttendeeRegisterComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]

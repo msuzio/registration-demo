@@ -1,3 +1,39 @@
-<p>
-  attendee-list works!
-</p>
+<!-- table of attendees -->
+<table class="table">
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Address</th>
+      <th>Address2</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip</th>
+      <th>Country</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let attendee of attendees">
+          <td>{{attendee.firstName}}</td>
+          <td>{{attendee.lastName}}</td>
+          <td>{{attendee.address}}</td>
+          <td>{{attendee.address2}}</td>
+          <td>{{attendee.city}}</td>
+          <td>{{attendee.state}}</td>
+          <td>{{attendee.zipCode}}</td>
+          <td>{{attendee.country}}</td>
+          <td>{{attendee.formattedRegisterDate}}</td>
+      </tr>
+      <!--
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      -->
+  </tbody>
+</table>
