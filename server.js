@@ -4,7 +4,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongodb = require("mongodb");
 const dateFormat = require('dateformat');
-const states = require('./public/scripts/statelist');
+const states = require('./util/statelist');
 
 var ObjectID = mongodb.ObjectID;
 
@@ -40,25 +40,30 @@ function handleError(res, reason, message, code) {
     console.log("ERROR: " + reason);
     res.status(code || 500).json({"error": message});
 }
+
  const ATTENDEE_ENDPOINT = "/event/attendee";
   /* connect to our attendee endpoint:
   * GET: Return all attendees
   * POST: Registers a new attendee and returns confirmation data
   */
   // TODO -- wrap all this in a service on this side too
-  app.get(ATTENDEE_ENDPOINT, function(req, res) {
-    for (abbrev in states) {
-
+  app.get("/event/states", function(req, res) {
+    var temp = [];
+    for (var abbrev in states) {
+      if (states.hasOwnProperty(abbrev)) {
+        temp.push(abbrev);
+      }
     }
-
+    res.status(200).json(temp.sort());
   });
   
   app.post(ATTENDEE_ENDPOINT, function(req, res) {
       var attendee = req.body;
       console.log(req.body);
       var now = new Date();
-      attendee.registerDate = now;
       // TODO - validate data
+
+      attendee.registerDate = now;
       db.collection(ATTENDEES_COLLECTION).insertOne(attendee, function(err, doc) {
         if (err) {
           handleError(res, err.message, "Failed to create new attendee.");
@@ -90,6 +95,12 @@ app.get('/event/state', function(req, res) {
   stateAbbrevs.sort
   res.status(200).json(stateAbbrevs)
 });
+
+// serve up the Angular pre-buult content (includes the index.html as
+// the root page, neat!)
+// Create link to Angular build directory
+var distDir = __dirname + "/dist/";
+app.use(express.static(distDir));
 
 // Initialize the app.
 var server = app.listen(process.env.PORT || 8080, function () {

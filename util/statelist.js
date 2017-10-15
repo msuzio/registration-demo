@@ -1,5 +1,5 @@
 module.exports = (function() {
-    const states = Object.create(null);
+    const states = {};
     states["AL"] = "ALABAMA";
     states["AK"] = "ALASKA";
     states["AZ"] = "ARIZONA";
@@ -50,5 +50,6 @@ module.exports = (function() {
     states["WV"] = "WEST VIRGINIA";
     states["WI"] = "WISCONSIN";
     states["WY"] = "WYOMING";
-return states;
+    
+    return states;
 })();

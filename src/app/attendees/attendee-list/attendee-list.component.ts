@@ -18,15 +18,34 @@ export class AttendeeListComponent implements OnInit {
   }
 
   ngOnInit() {
-    // TODO -- SERVICE CALL NO WORKY
-    this.attendees = JSON.parse(test);
+    // fetch list 
+    var temp: Attendee[];
+    this.attendeeService
+    .getAttendees().then((thoseGuys: Attendee[]) => {
+        this.attendees = thoseGuys.map((guy) => {
+          return guy;
+        });
+      });
+
+    
+    // TODO - putting this in a pipe was troublesome -- fix that
     this.attendees.sort((a: Attendee, b: Attendee) => {
-      console.log ("a= " +a);
-      console.log ("b= " +b);
-      return a.registerDate.getMilliseconds() - b.registerDate.getMilliseconds();
+      if (a && a.registerDate) {
+        if (b && b.registerDate) {
+      if (a == b) {
+        return 0;
+      } else  {
+        return a.registerDate < b.registerDate ? -1:1;
+      }
+        } else {
+          // no b -- sort lower
+          return 1;
+        }
+      } else {
+        // no a -- sort a lower
+        return -1;
+
+      }
     })
-    // this.attendees = r.map((a)=> {
-    //   return a;
-    // });
   }
 }
