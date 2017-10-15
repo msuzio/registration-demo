@@ -2,7 +2,7 @@
 <!-- table of attendees -->
 <div class="table-responsive">
 <table class="table-striped table-bordered table-hover">
-  <!-- TODO - not quite working -->
+  <!-- TODO - styling not quite working -->
   <thead class="thead-inverse">
     <tr>
       <th>First Name</th>
@@ -17,7 +17,7 @@
     </tr>
   </thead>
   <tbody>
-    <!-- sort by date -->
+    <!-- TODO sort by date -->
       <tr *ngFor="let attendee of attendees">
           <td>{{attendee.firstName}}</td>
           <td>{{attendee.lastName}}</td>
@@ -27,7 +27,8 @@
           <td>{{attendee.state}}</td>
           <td>{{attendee.zipCode}}</td>
           <td>{{attendee.country}}</td>
-          <td>{{attendee.formattedRegisterDate}}</td>
+          <!-- TODO - FIX THIS DATE FORMAT -->
+          <td>{{attendee.registerDate | date: 'y-M-d h:m:s Z'}}</td>
       </tr>
   </tbody>
 </table>

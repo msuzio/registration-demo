@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 const states = '["MI","TX","CA"]';
 @Component({
-  selector: 'attendee-register',
+  selector: 'app-attendee-register',
   templateUrl: './attendee-register.component.html',
   styleUrls: ['./attendee-register.component.css']
 })

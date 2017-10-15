@@ -1,7 +1,6 @@
 export class Attendee {
     _id : string;
     registerDate: Date;
-    formattedRegisterDate: Date;
     firstName: string;
     lastName:string;
     address: string;

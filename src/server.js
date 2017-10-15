@@ -60,8 +60,6 @@ function handleError(res, reason, message, code) {
       console.log(req.body);
       var now = new Date();
       attendee.registerDate = now;
-      // TODO --  look at better date formatting
-      attendee.formattedRegisterDate = dateFormat(now, "UTC:h:MM:ss TT Z");
       // TODO - validate data
       db.collection(ATTENDEES_COLLECTION).insertOne(attendee, function(err, doc) {
         if (err) {
