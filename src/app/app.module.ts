@@ -6,15 +6,13 @@ import { AppComponent } from './app.component';
 import { AttendeeDetailsComponent } from './attendees/attendee-details/attendee-details.component';
 import { AttendeeListComponent } from './attendees/attendee-list/attendee-list.component';
 import { AttendeeRegisterComponent } from './attendees/attendee-register/attendee-register.component';
-import { FooterComponent } from './src/app/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AttendeeDetailsComponent,
     AttendeeListComponent,
-    AttendeeRegisterComponent,
-    FooterComponent
+    AttendeeRegisterComponent
   ],
   imports: [
     BrowserModule,HttpModule
