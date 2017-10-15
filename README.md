@@ -11,6 +11,6 @@ An application to provide three functions:
 # Acknowledgments
 * The stub of this project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.4.
 * API code adapted from [Heroku MEAN Tutorial](https://devcenter.heroku.com/articles/mean-apps-restful-api).
-   * See [See Virtue #1](http://threevirtues.com/) for motivation; Nevertheless, the general approach with Express and Mongo is fairly cookie-cutter in any case.
-* [Angular.io](http://angular.io), [Stack Overflow](https://stackoverflow.com/) and [Udemy](https://www.udemy.com/) for filling in my imperfect Angular knowledge.
+    * See [See Virtue #1](http://threevirtues.com/) for motivation; Nevertheless, the general approach with Express and Mongo is fairly cookie-cutter in any case.
+* Thanks to [Angular.io](http://angular.io), [Stack Overflow](https://stackoverflow.com/) and [Udemy](https://www.udemy.com/) for filling in my imperfect Angular knowledge, and my wife for putting up with the times I disappear into my office for a few days.
 
