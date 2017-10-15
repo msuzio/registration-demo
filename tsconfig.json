@@ -18,6 +18,6 @@
     "compilerOptions": { 
       "moduleResolution": "node",
       "module": "commonjs"
-  }
+    }
   }
 }
