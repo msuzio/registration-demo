@@ -4,6 +4,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongodb = require("mongodb");
 const dateFormat = require('dateformat');
+const states = require('./public/scripts/statelist');
 
 var ObjectID = mongodb.ObjectID;
 
@@ -44,15 +45,12 @@ function handleError(res, reason, message, code) {
   * GET: Return all attendees
   * POST: Registers a new attendee and returns confirmation data
   */
-  
+  // TODO -- wrap all this in a service on this side too
   app.get(ATTENDEE_ENDPOINT, function(req, res) {
-    db.collection(ATTENDEES_COLLECTION).find({}).toArray(function(err, docs) {
-      if (err) {
-        handleError(res, err.message, "Failed to get contacts.");
-      } else {
-        res.status(200).json(docs);
-      }
-    });
+    for (abbrev in states) {
+
+    }
+
   });
   
   app.post(ATTENDEE_ENDPOINT, function(req, res) {
@@ -69,6 +67,28 @@ function handleError(res, reason, message, code) {
         }
       }
   );
+});
+
+// one more incidental service -- return all the state abbreviations
+// only here because I need this on both server and client side and 
+// figuring out a common module sharing strategy was taking longer
+app.get(ATTENDEE_ENDPOINT, function(req, res) {
+  db.collection(ATTENDEES_COLLECTION).find({}).toArray(function(err, docs) {
+    if (err) {
+      handleError(res, err.message, "Failed to get attendee list");
+    } else {
+      res.status(200).json(docs);
+    }
+  });
+});
+app.get('/event/state', function(req, res) {
+  var stateAbbrevs = [];
+  for (let abbrev in states) {
+    stateAbbrevs.push(abbrev);
+  }
+
+  stateAbbrevs.sort
+  res.status(200).json(stateAbbrevs)
 });
 
 // Initialize the app.
