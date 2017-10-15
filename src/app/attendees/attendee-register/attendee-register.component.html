@@ -1,3 +1,22 @@
-<p>
-  attendee-register works!
-</p>
+<!-- TODO bind to a model -->
+<form method="POST">
+  <div class="form-group">
+    <label for="firstName">First Name: </label><input class="formcontrol" type="text" name="firstname" id="firstname"autocomplete="on" required/>
+    <label for="lastName">Last Name: </label><input class="formcontrol" type="text" name="lastname" id="lastname"autocomplete="on" required/>
+    <label for="address1">Address: </label><input class="formcontrol" type="text" name="address" id = "address" autocomplete="on" required/>
+    <label for="address2">Address2: </label><input class="formcontrol" type="text" name="address2" id="address2"autocomplete="on"/>
+      <label for="city">City: </label><input class="formcontrol" type="text" name="city" id="city" autocomplete="on" required/>
+    <!-- TODO spiffy if this tracked inputs and put '-' in automagically after 5 digits-->
+    <label for="zipcode">Zipcode: </label><input class="formcontrol" type="text" name="zipCode" id="zipCode" autocomplete="on" required/>
+      <label for="state">State: </label>
+      <select name="state" id="state" autocomplete="on">
+      <option *ngFor="let state of states">{{state}}</option>
+    </select>
+    <label for="country">Country: </label>
+    <select name="country" id="country">
+      <option>US</option>
+    </select>
+<input class="btn btn-primary" type="submit" name="submit" id="submit"
+  value="Register"/>
+  </div>
+</form>
