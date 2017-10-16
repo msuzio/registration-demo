@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const mongodb = require("mongodb");
 const dateFormat = require('dateformat');
 const states = require('./util/statelist');
+const validator = require("./util/validator.js");
 
 var ObjectID = mongodb.ObjectID;
 
@@ -61,7 +62,7 @@ function handleError(res, reason, message, code) {
       var attendee = req.body;
       console.log(req.body);
       var now = new Date();
-      // TODO - validate data
+      
 
       attendee.registerDate = now;
       db.collection(ATTENDEES_COLLECTION).insertOne(attendee, function(err, doc) {
