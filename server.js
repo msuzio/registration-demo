@@ -60,20 +60,21 @@ function handleError(res, reason, message, code) {
   
   app.post(ATTENDEE_ENDPOINT, function(req, res) {
       var attendee = req.body;
-      console.log(req.body);
-      var now = new Date();
-      
-
-      attendee.registerDate = now;
-      db.collection(ATTENDEES_COLLECTION).insertOne(attendee, function(err, doc) {
-        if (err) {
-          handleError(res, err.message, "Failed to create new attendee.");
-        } else {
-          res.status(201).json(doc.ops[0]);
-        }
-      }
-  );
-});
+      //console.log(req.body);
+      var errors = validator.validateAttendee(attendee);
+      if(Object.keys(errors).length == 0) {
+        attendee.registerDate = new Date();
+        db.collection(ATTENDEES_COLLECTION).insertOne(attendee, function(err, doc) {
+          if (err) {
+            handleError(res, err.message, "Failed to create new attendee.");
+          } else {
+            res.status(201).json(doc.ops[0]);
+          }
+        });
+    } else {
+      res.status(500).json(errors);
+    } 
+  });
 
 // one more incidental service -- return all the state abbreviations
 // only here because I need this on both server and client side and 

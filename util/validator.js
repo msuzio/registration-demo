@@ -8,8 +8,6 @@ module.exports = (function() {
         };
 
         if (data) {
-            
-
             // first name
             // last name
             var nameError = "A first name and last name are required";
@@ -24,7 +22,7 @@ module.exports = (function() {
             if (!data["address"]) {
                 errors["address"] = "An address is required";
             }
-            
+
             // state must be valid
             var dataState = data["state"];
             if (!dataState || !states[dataState]) {
@@ -50,13 +48,15 @@ module.exports = (function() {
                     // split two sections
                     var zip5 = zipCode.substring(0,dashPos);
                     var zip4 = zipCode.substring(dashPos+1);
+                    console.log("zip5 == " + zip5);
+                    console.log("zip4 == " + zip4);
                     
                     // each must be of the right size and coercable to a number
-                    if (zip5.length != 5 || isNotNumeric(zipCode) ) {
+                    if (zip5.length != 5 || isNotNumeric(zip5) ) {
                         zipOK = false;
                     }
                 } else {
-                    if (zipCode.length != 5 || isNotNumeric(zipCode)) {
+                    if (zipCode.length != 5 || isNotNumeric(zip5)) {
                         zipOK = false;
                     }
                 }
@@ -70,6 +70,7 @@ module.exports = (function() {
     }
         return errors;
     }
+
     function isNotNumeric(input) {
         return isNaN(Number(input));
     }
