@@ -1,19 +1,19 @@
 <!-- TODO bind to a model -->
-<form method="POST">
+<form #f= ngForm (ngSubmit)="onSubmit(f)">
   <div class="form-group">
-    <label for="firstName">First Name: </label><input class="formcontrol" type="text" name="firstname" id="firstname"autocomplete="on" required/>
-    <label for="lastName">Last Name: </label><input class="formcontrol" type="text" name="lastname" id="lastname"autocomplete="on" required/>
-    <label for="address1">Address: </label><input class="formcontrol" type="text" name="address" id = "address" autocomplete="on" required/>
-    <label for="address2">Address2: </label><input class="formcontrol" type="text" name="address2" id="address2"autocomplete="on"/>
-      <label for="city">City: </label><input class="formcontrol" type="text" name="city" id="city" autocomplete="on" required/>
+    <label for="firstName">First Name: </label><input [(ngModel)]="firstName" class="formcontrol" type="text" name="firstname" id="firstname" autocomplete="on"/>
+    <label for="lastName">Last Name: </label><input [(ngModel)]="lastName" class="formcontrol" type="text" name="lastname" id="lastname"autocomplete="on"/>
+    <label for="address1">Address: </label><input [(ngModel)]="address" class="formcontrol" type="text" name="address" id = "address" autocomplete="on"/>
+    <label for="address2">Address2: </label><input [(ngModel)]="address2" class="formcontrol" type="text" name="address2" id="address2"autocomplete="on"/>
+      <label for="city">City: </label><input [(ngModel)]="city" class="formcontrol" type="text" name="city" id="city" autocomplete="on" required/>
     <!-- TODO spiffy if this tracked inputs and put '-' in automagically after 5 digits-->
-    <label for="zipcode">Zipcode: </label><input class="formcontrol" type="text" name="zipCode" id="zipCode" autocomplete="on" required/>
+    <label for="zipcode">Zipcode:</label><input [(ngModel)]="zipCode" class="formcontrol" type="text" name="zipCode" id="zipCode" autocomplete="on/>
       <label for="state">State: </label>
-      <select name="state" id="state" autocomplete="on">
+      <select [(ngModel)]="state" name="state" id="state" autocomplete="on">
       <option *ngFor="let state of states">{{state}}</option>
     </select>
     <label for="country">Country: </label>
-    <select name="country" id="country">
+    <select [(ngModel)]="country" name="country" id="country">
       <option>US</option>
     </select>
 <input class="btn btn-primary" type="submit" name="submit" id="submit"

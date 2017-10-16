@@ -6,6 +6,7 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class AttendeeService {
   private attendeeUrl = "/event/attendee";
+  private stateUrlUrl = "/event/state";
 
     constructor (private http: Http) {}
 
@@ -23,6 +24,14 @@ export class AttendeeService {
                  .toPromise()
                  .then(response => response.json() as Attendee)
                  .catch(this.handleError);
+    }
+
+    // get("/event/state")
+    getStates(): Promise<void | string[]> {
+      return this.http.get(this.stateUrlUrl)
+                   .toPromise()
+                   .then(response => response.json() as string[])
+                   .catch(this.handleError);
     }
 
     private handleError (error: any) {

@@ -1,8 +1,17 @@
+ 'use strict'
+ var dates = [];
+ for (let i = 0; i <4; i++) {
+  let  d = new Date();
+  d.setMinutes(i);
+  dates.unshift(d);
+ }
+ dates.unshift(null);
+ dates.push(undefined);
 
-
-for (abbrev in states) {
-  console.log(abbrev);
-};
+dates.sort(compare);
+for (let j = 0; j <dates.length; j++) {
+  console.log(dates[j]);
+}
 
 // var MongoClient = require('mongodb').MongoClient
 // , assert = require('assert');
