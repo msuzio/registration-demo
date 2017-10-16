@@ -9,24 +9,24 @@ import { AttendeeDetailsComponent } from './attendees/attendee-details/attendee-
 import { AttendeeListComponent } from './attendees/attendee-list/attendee-list.component';
 import { AttendeeRegisterComponent } from './attendees/attendee-register/attendee-register.component';
 
-const appRoutes: Routes = [
-  {
-    path: '/attendee/:id',
-    component:AttendeeDetailsComponent},
-  {
-    path: 'register',
-    component: AttendeeRegisterComponent,
-    data: { title: 'Event Registration'}
-  },
-  { path: 'report',
-  component: AttendeeListComponent
-  },
-  { path: '',
-    redirectTo: '/register',
-    pathMatch: 'full'
-  },
-  //{ path: '**', component: PageNotFoundComponent }
-];
+// const appRoutes: Routes = [
+//   {
+//     path: 'attendee/:id',
+//     component:AttendeeDetailsComponent},
+//   {
+//     path: 'register',
+//     component: AttendeeRegisterComponent,
+//     data: { title: 'Event Registration'}
+//   },
+//   { path: 'report',
+//   component: AttendeeListComponent
+//   },
+//   { path: '',
+//     redirectTo: '/register',
+//     pathMatch: 'full'
+//   },
+//   //{ path: '**', component: PageNotFoundComponent }
+// ];
 
 @NgModule({
   declarations: [
@@ -36,7 +36,7 @@ const appRoutes: Routes = [
     AttendeeRegisterComponent
   ],
   imports: [
-    RouterModule.forRoot(appRoutes),
+   // RouterModule.forRoot(appRoutes),
     BrowserModule,
     HttpModule,
     FormsModule
