@@ -11,7 +11,7 @@ const states = '["MI","TX","CA"]';
 })
 export class AttendeeRegisterComponent implements OnInit {
 
-  states: string[];
+  states: string[] = ["MI","AK"]
   //
   // This is absolutely *not* the way to do this, I know, but..
   firstName: string = "";
@@ -26,12 +26,12 @@ export class AttendeeRegisterComponent implements OnInit {
   constructor(private attendeeService: AttendeeService) { }
 
   ngOnInit() {
-    this.attendeeService
-    .getStates().then((states: string[]) => {
-        this.states = states.map((s) => {
-          return s;
-        });
-      });
+    // this.attendeeService
+    // .getStates().then((states: string[]) => {
+    //     // this.states = states.map((s) => {
+    //     //   return s;
+    //     // });
+    //   });
   }
 
   onSubmit(event) {

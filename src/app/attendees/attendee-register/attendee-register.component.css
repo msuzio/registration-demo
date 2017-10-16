@@ -1,0 +1,7 @@
+.bordered {
+  border-style: solid;
+  border-radius:  3px;
+}
+
+.row {margin-top:10px;}
+.top-buffer { margin-top:20px; }

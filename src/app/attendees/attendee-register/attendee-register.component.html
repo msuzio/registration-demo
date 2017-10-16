@@ -1,22 +1,76 @@
 <!-- TODO bind to a model -->
 <form #f= ngForm (ngSubmit)="onSubmit(f)">
   <div class="form-group">
-    <label for="firstName">First Name: </label><input [(ngModel)]="firstName" class="formcontrol" type="text" name="firstname" id="firstname" autocomplete="on"/>
-    <label for="lastName">Last Name: </label><input [(ngModel)]="lastName" class="formcontrol" type="text" name="lastname" id="lastname"autocomplete="on"/>
-    <label for="address1">Address: </label><input [(ngModel)]="address" class="formcontrol" type="text" name="address" id = "address" autocomplete="on"/>
-    <label for="address2">Address2: </label><input [(ngModel)]="address2" class="formcontrol" type="text" name="address2" id="address2"autocomplete="on"/>
-      <label for="city">City: </label><input [(ngModel)]="city" class="formcontrol" type="text" name="city" id="city" autocomplete="on" required/>
-    <!-- TODO spiffy if this tracked inputs and put '-' in automagically after 5 digits-->
-    <label for="zipcode">Zipcode:</label><input [(ngModel)]="zipCode" class="formcontrol" type="text" name="zipCode" id="zipCode" autocomplete="on/>
-      <label for="state">State: </label>
-      <select [(ngModel)]="state" name="state" id="state" autocomplete="on">
-      <option *ngFor="let state of states">{{state}}</option>
-    </select>
-    <label for="country">Country: </label>
-    <select [(ngModel)]="country" name="country" id="country">
-      <option>US</option>
-    </select>
-<input class="btn btn-primary" type="submit" name="submit" id="submit"
-  value="Register"/>
-  </div>
+    <div class="bordered">
+    <div class=".container-fluid">
+      <!-- first name -->
+      <div class="row">
+          <div class="col-sm-2">
+            <span class="pull-left"><label for="firstName">First Name: </label></span>
+          </div>
+          <div class="col-sm-2">
+              <span class="pull-left"><input [(ngModel)]="firstName" class="formcontrol" type="text" name="firstName" id = "firstName" autocomplete="on"/></span>
+          </div>
+        </div>
+
+      <!-- last name -->
+      <div class="row">
+          <div class="col-sm-2">
+            <span class="pull-left"><label for="lastName">Last Name: </label></span>
+          </div>
+          <div class="col-sm-2">
+              <span class="pull-left"><input [(ngModel)]="lastName" class="formcontrol" type="text" name="lastName" id = "lasstName" autocomplete="on"/></span>
+          </div>
+        </div>
+
+      <!-- address -->
+      <div class="row">
+        <div class="col-sm-2">
+          <span class="pull-left"><label for="address">Address: </label></span>
+        </div>
+        <div class="col-sm-2">
+            <span class="pull-left"><input [(ngModel)]="address" class="formcontrol" type="text" name="address" id = "address" autocomplete="on"/></span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-2">
+          <span class="pull-left"><label for="address2">Address 2: </label></span>
+        </div>
+        <div class="col-sm-2">
+            <span class="pull-left"><input [(ngModel)]="address2" class="formcontrol" type="text" name="address2" id = "address2" autocomplete="on"/></span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-3">
+            <label for="city">City: </label>
+            <input [(ngModel)]="city" class="formcontrol" type="text" name="city" id="city" autocomplete="on" required/>
+        </div>
+        <div class="col-sm-3">
+            <label for="zipcode">Zipcode: </label>
+            <input [(ngModel)]="zipCode" class="formcontrol" type="text" name="zipCode" id="zipCode" size="9" autocomplete="on"/>
+        </div>
+        <div class="col-sm-2">
+            <span class="pull-left"><label for="state">State: </label>        
+            <select [(ngModel)]="state" name="state" id="state" autocomplete="on">
+            <option *ngFor="let state of states" value="{{state}}">{{state}}</option>
+          </select>
+          </span>
+        </div>
+        <div class="col-sm-2">
+          <label for="country">Country: </label>
+          <select [(ngModel)]="country" name="country" id="country">
+            <option value="US" selected>US</option>
+          </select>
+        </div>
+      </div>
+      <div class="row top-buffer">
+        <div class="col-sm-12">
+            <input class="btn btn-primary" type="submit" name="submit" id="submit" value="Register"/>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
 </form>
