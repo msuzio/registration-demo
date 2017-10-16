@@ -1,13 +1,14 @@
 'use strict'
 module.exports = (function() {
     const states = {};
-    states["AL"] = "ALABAMA";
+    states["ME"] = "MAINE";
     states["AK"] = "ALASKA";
     states["AZ"] = "ARIZONA";
     states["AR"] = "ARKANSAS";
     states["CA"] = "CALIFORNIA";
     states["CO"] = "COLORADO";
     states["CT"] = "CONNECTICUT";
+    states["AL"] = "ALABAMA";
     states["DE"] = "DELAWARE";
     states["FL"] = "FLORIDA";
     states["GA"] = "GEORGIA";
@@ -19,7 +20,6 @@ module.exports = (function() {
     states["KS"] = "KANSAS";
     states["KY"] = "KENTUCKY";
     states["LA"] = "LOUISIANA";
-    states["ME"] = "MAINE";
     states["MD"] = "MARYLAND";
     states["MA"] = "MASSACHUSETTS";
     states["MI"] = "MICHIGAN";

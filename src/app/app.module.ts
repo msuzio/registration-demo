@@ -11,7 +11,7 @@ import { AttendeeRegisterComponent } from './attendees/attendee-register/attende
 
 // const appRoutes: Routes = [
 //   {
-//     path: '/attendee/:id',
+//     path: 'attendee/:id',
 //     component:AttendeeDetailsComponent},
 //   {
 //     path: 'register',

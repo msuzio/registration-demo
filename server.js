@@ -15,11 +15,11 @@ app.use(bodyParser.json());
 
 // Create a database variable outside of the database connection callback to reuse the connection pool in your app.
 var mongoURL = process.env.MONGODB_URI || 'mongodb://localhost:27017/registration';
-var db;
 var ObjectID = mongodb.ObjectID;
 
 var ATTENDEES_COLLECTION = "attendees";
 
+var db;
 mongodb.MongoClient.connect(mongoURL,
     function (err, database) {
         if (err) {
@@ -92,14 +92,19 @@ app.get('/event/state', function(req, res) {
     stateAbbrevs.push(abbrev);
   }
 
-  stateAbbrevs.sort
+  stateAbbrevs.sort();
   res.status(200).json(stateAbbrevs)
 });
 
-// serve up the Angular pre-buult content (includes the index.html as
-// the root page, neat!)
-// Create link to Angular build directory
+// Create link to Angular build directory. 
 var distDir = __dirname + "/dist/";
+
+// send every non-explicit route to the Angular index
+app.get('*', function (req, res) {
+  res.sendFile(distDir+ "/index.html");
+});
+
+// might be uneeded/ignored with above line and Webpacked content?
 app.use(express.static(distDir));
 
 // Initialize the app.
