@@ -5,8 +5,8 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class AttendeeService {
-  private attendeeUrl = "/event/attendee";
-  private stateUrlUrl = "/event/state";
+  private attendeeUrl = "http:/localhost:8080/event/attendee";
+  private stateUrlUrl = "http://localhost:8080/event/state";
 
     constructor (private http: Http) {}
 

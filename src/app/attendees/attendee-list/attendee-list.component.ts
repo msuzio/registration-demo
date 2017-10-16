@@ -21,9 +21,9 @@ export class AttendeeListComponent implements OnInit {
     var temp: Attendee[];
     this.attendeeService
     .getAttendees().then((thoseGuys: Attendee[]) => {
-        this.attendees = thoseGuys.map((guy) => {
-          return guy;
-        });
+        // this.attendees = thoseGuys.map((guy) => {
+        //   return guy;
+        // });
       });
 
     

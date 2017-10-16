@@ -1,7 +1,12 @@
+ 
+.banner {
+    text-align: center;
+    margin: 0px;
+}
 .bordered {
   border-style: solid;
   border-radius:  3px;
 }
 
-.row {margin-top:10px;}
-.top-buffer { margin-top:20px; }
+.row {margin:10px;}
+.submit-area { margin-top:20px;  text-align: center}

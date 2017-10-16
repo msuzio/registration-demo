@@ -1,7 +1,8 @@
+<div class="banner bg-primary"><h2>Registration</h2></div>
 <!-- TODO bind to a model -->
 <form #f= ngForm (ngSubmit)="onSubmit(f)">
   <div class="form-group">
-    <div class="bordered">
+    <div class="bordered padded">
     <div class=".container-fluid">
       <!-- first name -->
       <div class="row">
@@ -43,11 +44,11 @@
       </div>
 
       <div class="row">
-        <div class="col-sm-3">
+        <div class="col-sm-4">
             <label for="city">City: </label>
             <input [(ngModel)]="city" class="formcontrol" type="text" name="city" id="city" autocomplete="on" required/>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-4">
             <label for="zipcode">Zipcode: </label>
             <input [(ngModel)]="zipCode" class="formcontrol" type="text" name="zipCode" id="zipCode" size="9" autocomplete="on"/>
         </div>
@@ -65,7 +66,7 @@
           </select>
         </div>
       </div>
-      <div class="row top-buffer">
+      <div class="row top-buffer submit-area">
         <div class="col-sm-12">
             <input class="btn btn-primary" type="submit" name="submit" id="submit" value="Register"/>
         </div>
