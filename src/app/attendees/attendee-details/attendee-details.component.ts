@@ -15,7 +15,7 @@ export class AttendeeDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.attendee = JSON.parse(test);
-    console.log(this.attendee);
+    // console.log(this.attendee);
   }
 
 }

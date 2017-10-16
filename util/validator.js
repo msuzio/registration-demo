@@ -48,8 +48,6 @@ module.exports = (function() {
                     // split two sections
                     var zip5 = zipCode.substring(0,dashPos);
                     var zip4 = zipCode.substring(dashPos+1);
-                    console.log("zip5 == " + zip5);
-                    console.log("zip4 == " + zip4);
                     
                     // each must be of the right size and coercable to a number
                     if (zip5.length != 5 || isNotNumeric(zip5) ) {
