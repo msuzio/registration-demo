@@ -18,7 +18,11 @@ export class AttendeeListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.attendees = JSON.parse(test);
+    //this.attendees = JSON.parse(test);
+    this.attendeeService.getAttendees().then((attendees: Attendee[])=> {
+      attendees.forEach((a) => {console.log(a)});
+    });
+
     // fetch list 
     // var temp: Attendee[];
     // this.attendeeService

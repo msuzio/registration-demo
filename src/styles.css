@@ -1,1 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+/* global styles */
+.banner {
+    text-align: center;
+    margin: 0px;
+}
+
+.bordered {
+    border-style: solid;
+    border-radius:  3px;
+  }

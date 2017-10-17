@@ -1,9 +1,4 @@
 
-.banner {
-    text-align: center;
-    margin: 0px;
-}
-
 th {
     padding: 10px;
     background-color: #254483;
@@ -13,3 +8,13 @@ th {
 td {
     padding: 5px;
 }
+
+.banner {
+    text-align: center;
+    margin: 0px;
+}
+
+.bordered {
+    border-style: solid;
+    border-radius:  3px;
+  }

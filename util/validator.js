@@ -24,10 +24,10 @@ module.exports = (function() {
             }
 
             // state must be valid
-            var dataState = data["state"];
-            if (!dataState || !states[dataState]) {
-                errors["state"] = "Must be a valid state";
-            }
+            // var dataState = data["state"];
+            // if (!dataState || !states[dataState]) {
+            //     errors["state"] = "Must be a valid state";
+            // }
             
             // country must be valid
             var dataCountry = data["country"];
