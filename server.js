@@ -1,22 +1,20 @@
 'use strict'
-
-const express = require("express");
+var express = require('express');
+var cors = require('cors');
 const bodyParser = require("body-parser");
 const mongodb = require("mongodb");
 const dateFormat = require('dateformat');
 const states = require('./util/statelist');
 const validator = require("./util/validator.js");
 
-var ObjectID = mongodb.ObjectID;
-
-
 // our basic trusty tiny web server
 var app = express();
+// enable CORS globally, so local ng serve on different port works during development
+app.use(cors());
 app.use(bodyParser.json());
 
 // Create a database variable outside of the database connection callback to reuse the connection pool in your app.
 var mongoURL = process.env.MONGODB_URI || 'mongodb://localhost:27017/registration';
-var ObjectID = mongodb.ObjectID;
 
 var ATTENDEES_COLLECTION = "attendees";
 
@@ -72,6 +70,7 @@ function handleError(res, reason, message, code) {
           }
         });
     } else {
+      console.log(errors);
       res.status(500).json(errors);
     } 
   });

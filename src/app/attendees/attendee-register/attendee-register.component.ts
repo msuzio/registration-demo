@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {AttendeeService} from '../service/attendee-service';
 import {Attendee} from '../model/attendee';
 
-const states = '["MI","TX","CA"]';
 @Component({
   selector: 'app-attendee-register',
   templateUrl: './attendee-register.component.html',
@@ -10,18 +9,9 @@ const states = '["MI","TX","CA"]';
   providers: [AttendeeService]
 })
 export class AttendeeRegisterComponent implements OnInit {
-
-  states: string[] = ["MI","AK"]
-  //
-  // This is absolutely *not* the way to do this, I know, but..
-  firstName: string = "";
-  lastName: string = "";
-  address: string="";
-  address2: string;
-  city: string;
-  state: string;
-  country: string;
-  zipCode: string;
+  states: String[];
+  // empty model
+  model: Attendee = new Attendee("","","","","","","","");
 
   constructor(private attendeeService: AttendeeService) { }
 
@@ -35,8 +25,13 @@ export class AttendeeRegisterComponent implements OnInit {
   }
 
   onSubmit(event) {
-    var a : Attendee = new Attendee(this.firstName, this.lastName, this.address, this.address2, this.zipCode, this.city, this.state,this.country);
-    this.attendeeService.createAttendee(a);
-    
+    var registered: Attendee;
+    this.attendeeService.createAttendee(this.model).then((result:Attendee)=> {
+      registered= result;
+    });
+  console.log(registered);
   }
+
+    // TODO: Remove this when we're done
+    get diagnostic() { return JSON.stringify(this.model); }
 }

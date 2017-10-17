@@ -1,7 +1,6 @@
 <div class="banner bg-primary"><h2>Registration</h2></div>
-<!-- TODO bind to a model -->
-<form #f= ngForm (ngSubmit)="onSubmit(f)">
-  <div class="form-group">
+
+<form #attendeeForm="ngForm" (ngSubmit)="onSubmit(f)">
     <div class="bordered padded">
     <div class=".container-fluid">
       <!-- first name -->
@@ -10,7 +9,7 @@
             <span class="pull-left"><label for="firstName">First Name: </label></span>
           </div>
           <div class="col-sm-2">
-              <span class="pull-left"><input [(ngModel)]="firstName" class="formcontrol" type="text" name="firstName" id = "firstName" autocomplete="on"/></span>
+              <span class="pull-left"><input [(ngModel)]="model.firstName"  type="text" name="firstName" id = "firstName" autocomplete="on"/></span>
           </div>
         </div>
 
@@ -20,7 +19,7 @@
             <span class="pull-left"><label for="lastName">Last Name: </label></span>
           </div>
           <div class="col-sm-2">
-              <span class="pull-left"><input [(ngModel)]="lastName" class="formcontrol" type="text" name="lastName" id = "lasstName" autocomplete="on"/></span>
+              <span class="pull-left"><input [(ngModel)]="model.lastName"  type="text" name="lastName" id = "lasstName" autocomplete="on"/></span>
           </div>
         </div>
 
@@ -30,7 +29,7 @@
           <span class="pull-left"><label for="address">Address: </label></span>
         </div>
         <div class="col-sm-2">
-            <span class="pull-left"><input [(ngModel)]="address" class="formcontrol" type="text" name="address" id = "address" autocomplete="on"/></span>
+            <span class="pull-left"><input [(ngModel)]="model.address"  type="text" name="address" id = "address" autocomplete="on"/></span>
         </div>
       </div>
 
@@ -39,39 +38,39 @@
           <span class="pull-left"><label for="address2">Address 2: </label></span>
         </div>
         <div class="col-sm-2">
-            <span class="pull-left"><input [(ngModel)]="address2" class="formcontrol" type="text" name="address2" id = "address2" autocomplete="on"/></span>
+            <span class="pull-left"><input [(ngModel)]="model.address2"  type="text" name="address2" id = "address2" autocomplete="on"/></span>
         </div>
       </div>
 
       <div class="row">
         <div class="col-sm-4">
             <label for="city">City: </label>
-            <input [(ngModel)]="city" class="formcontrol" type="text" name="city" id="city" autocomplete="on" required/>
+            <input [(ngModel)]="model.city"  type="text" name="city" id="city" autocomplete="on" required/>
         </div>
         <div class="col-sm-4">
             <label for="zipcode">Zipcode: </label>
-            <input [(ngModel)]="zipCode" class="formcontrol" type="text" name="zipCode" id="zipCode" size="9" autocomplete="on"/>
+            <input [(ngModel)]="model.zipCode"  type="text" name="zipCode" id="zipCode" size="9" autocomplete="on"/>
         </div>
         <div class="col-sm-2">
             <span class="pull-left"><label for="state">State: </label>        
-            <select [(ngModel)]="state" name="state" id="state" autocomplete="on">
+            <select [(ngModel)]="model.state" name="state" id="state" autocomplete="on">
             <option *ngFor="let state of states" value="{{state}}">{{state}}</option>
           </select>
           </span>
         </div>
         <div class="col-sm-2">
           <label for="country">Country: </label>
-          <select [(ngModel)]="country" name="country" id="country">
+          <select [(ngModel)]="model.country" name="country" id="country">
             <option value="US" selected>US</option>
           </select>
         </div>
       </div>
       <div class="row top-buffer submit-area">
         <div class="col-sm-12">
-            <input class="btn btn-primary" type="submit" name="submit" id="submit" value="Register"/>
+            <input class="btn btn-primary" [disabled]="!attendeeForm.form.valid" type="submit" name="submit" id="submit" value="Register"/>
         </div>
       </div>
     </div>
     </div>
-    </div>
 </form>
+<p [hidden]="attendeeForm.form.valid">{{diagnostic}}</p>
