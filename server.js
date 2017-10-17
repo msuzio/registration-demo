@@ -14,7 +14,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Create a database variable outside of the database connection callback to reuse the connection pool in your app.
-var mongoURL = process.env.MONGODB_URI || 'mongodb://localhost:27017/registration';
+var mongoURL = process.env.MONGODB_URI || 'mongodb://msuzio:str0ng!@ds121495.mlab.com:21495/dorton'
 
 var ATTENDEES_COLLECTION = "attendees";
 
